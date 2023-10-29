@@ -1,0 +1,7 @@
+<h2 class="text-xl pb-6" title="{{ title }}"> {{ title }}: </h2>
+<ul>
+    <li *ngFor="let user of users" class="flex justify-between text-xl mb-6 border-2 w-96 p-3">
+        {{ user.name }} - {{ user.age }}
+        <button class="bg-red-600 text-white" (click)="delete.emit(user)">Delete</button>
+    </li>
+</ul>

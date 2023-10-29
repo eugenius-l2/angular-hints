@@ -1,0 +1,10 @@
+<div class="mb-3">
+    <input type="text" [(ngModel)]="value">
+    <p>value - {{ value }}</p>
+    <p>time - {{ timeChecker.getTime() | date: 'h:mm:ss.SSS' }}</p>
+</div>
+
+<div class="flex justify-between">
+    <app-cd-child-i></app-cd-child-i>
+    <app-cd-child-ii></app-cd-child-ii>
+</div>
