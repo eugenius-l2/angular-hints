@@ -1,0 +1,38 @@
+<div class="flex flex-col w-60 gap-10">
+    <div class="flex flex-col w-60 gap-8">
+        <h2>ng-template</h2>
+    
+        <div class="flex flex-col gap-2">
+            <button (click)="isTemplateShown = !isTemplateShown">Toggle</button>
+            <p *ngIf="isTemplateShown else falsely">Shows when condition is true</p>
+            <ng-template #falsely>
+                <p>Shows when condition is false</p>
+            </ng-template>
+        </div>
+    
+    
+        <div class="flex flex-col gap-2">
+            <ng-container *ngTemplateOutlet="item; context: {$implicit: itemData, role: 'admin'}"></ng-container>
+            <ng-template #item let-item let-role="role">
+                <p>user name - {{item.name}}</p>
+                <p>user role - {{role}}</p>
+            </ng-template>
+        </div>
+    </div>
+    
+    <div class="flex flex-col w-60 gap-2">
+        <h2>ng-container</h2>
+    
+        <ng-container *ngIf="list">
+            <ng-container *ngFor="let item of list">{{item}}</ng-container>
+        </ng-container>
+    </div>
+
+
+    <div class="flex flex-col w-60 gap-2">
+        <h2>ng-content</h2>
+        <ng-content></ng-content>
+        <ng-content select="[firt]"></ng-content>
+        <ng-content select="[second]"></ng-content>
+    </div>
+</div>
