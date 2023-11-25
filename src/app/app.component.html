@@ -1,1 +1,52 @@
-
+<div class="p-4 flex flex-col gap-4">
+  <nav>
+    <ul>
+      <!-- <li routerLink="main" routerLinkActive="active">Main</li> -->
+      <li
+        routerLink=""
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Main
+      </li>
+      <li routerLink="feature" routerLinkActive="active">Feature</li>
+      <li
+        [routerLink]="[{ outlets: { second: 'second' } }]"
+        ourouterLinkActive="active"
+      >
+        Second show
+      </li>
+      <li
+        [routerLink]="[{ outlets: { second: null } }]"
+        ourouterLinkActive="active"
+      >
+        Second hide
+      </li>
+      <li routerLink="nested" routerLinkActive="active">Nested</li>
+      <li routerLink="match" routerLinkActive="active">Match</li>
+      <li [routerLink]="['params', 1]" routerLinkActive="active">
+        Required Params
+      </li>
+      <li [routerLink]="['params', { id: 1 }]" routerLinkActive="active">
+        Optional Params
+      </li>
+      <li
+        [routerLink]="['params']"
+        [queryParams]="{ id: 1 }"
+        routerLinkActive="active"
+      >
+        Query Params
+      </li>
+      <li [routerLink]="['params']" fragment="fr" routerLinkActive="active">
+        Fragmant
+      </li>
+    </ul>
+  </nav>
+  <button (click)="onGoToHome()">Go to home</button>
+  <router-outlet
+    #router="outlet"
+    (activate)="activateRoute($event, router)"
+    (deactivate)="deactivateRoute($event, router)"
+  ></router-outlet>
+  <router-outlet name="second"></router-outlet>
+</div>
