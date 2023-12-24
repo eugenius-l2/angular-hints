@@ -1,0 +1,64 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <div
+    class="flex flex-col m-2"
+    [ngClass]="{
+      error: form.controls['name'].touched || form.controls['name'].dirty
+    }"
+  >
+    <label for="name">Name</label>
+    <input
+      id="name"
+      type="text"
+      placeholder="Enter your name"
+      formControlName="name"
+    />
+    <ng-container
+      *ngIf="
+        (form.controls['name'].touched || form.controls['name'].dirty) &&
+        form.controls['name'].errors
+      "
+    >
+      <span
+        *ngIf="form.controls['name'].errors['required']"
+        class="error-message"
+        >Name is required</span
+      >
+      <span
+        *ngIf="form.controls['name'].errors['minlength']"
+        class="error-message"
+        >Name must be longer then 4 characters</span
+      >
+    </ng-container>
+  </div>
+
+  <div
+    class="flex flex-col m-2"
+    [ngClass]="{
+      error:
+        form.controls['password'].touched || form.controls['password'].dirty
+    }"
+  >
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      placeholder="Enter your passwords"
+      formControlName="password"
+    />
+    <ng-container
+      *ngIf="
+        (form.controls['password'].touched ||
+          form.controls['password'].dirty) &&
+        form.controls['password'].errors
+      "
+    >
+      <span
+        *ngIf="form.controls['password'].errors['required']"
+        class="error-message"
+        >Password is required</span
+      >
+    </ng-container>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid" class="m-2">Submit</button>
+</form>
